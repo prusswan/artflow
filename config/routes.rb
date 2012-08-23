@@ -6,6 +6,7 @@ Artflow::Application.routes.draw do
   resources :creations, only: [:index, :show, :new, :create, :edit] do
     member do
       get 'permissions'
+      get 'approve'
     end
   end
   resources :campaigns, only: [:index, :show]

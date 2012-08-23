@@ -7,3 +7,9 @@
 %dl
   %dt Client
   %dd= creation_client_name
+
+= render 'interested'
+
+- if @creation.approvable?
+  %p.sprites
+    = icon_to("Approve Creation", :approve, approve_creation_path(@creation))

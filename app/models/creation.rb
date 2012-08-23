@@ -14,7 +14,7 @@ class Creation < ActiveRecord::Base
 
   before_validation :copy_client_id, on: :create
 
-  attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer
+  attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer, :status
 
   def title
     name
@@ -33,7 +33,8 @@ class Creation < ActiveRecord::Base
   end
 
   def approvable?
-    status == 'awaiting_approval'
+    # status == 'awaiting_approval'
+    true
   end
 
   def file_type
