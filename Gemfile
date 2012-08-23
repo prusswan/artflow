@@ -27,6 +27,18 @@ group :test, :development do
   gem "rspec-rails", "~> 2.0"
 end
 
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'headless'
+  gem 'launchy'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-cucumber'
+end
+
 gem 'jquery-rails'
 gem 'haml-rails'
 
