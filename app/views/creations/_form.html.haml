@@ -1,0 +1,12 @@
+= semantic_form_for @creation, html: {multipart: true} do |f|
+  = f.inputs 'Print Details', id: 'creation-print', class: 'inline' do
+    = f.input :color_space, collection: %w(CMYK RGB Other)
+    = f.input :bleed, size: 5, placeholder: 'Inches'
+    = ad_dimensions_tag(f)
+
+  = f.inputs do
+    = f.input :name, input_html: {autofocus: true}
+    = f.input :description, input_html: {cols: 80, rows: 4}
+    = f.input :file
+
+  = f.actions

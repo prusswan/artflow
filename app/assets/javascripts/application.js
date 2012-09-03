@@ -14,3 +14,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require comments
+//= require forms

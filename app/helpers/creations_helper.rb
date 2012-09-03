@@ -64,4 +64,20 @@ module CreationsHelper
     content_tag_for(:li, creation, class: creation.file_type, data: { id: creation.id }, &block)
   end
 
+  def ad_dimensions_tag(builder)
+    builder.input :ad_dimensions,
+      :as => :select,
+      :label => :ad_dimensions.to_s.titlecase,
+      :collection => grouped_options_for_select(ad_dimensions_options, builder.object.ad_dimensions)
+  end
+
+  def ad_dimensions_options
+    [
+     ['Print',
+       ['legal', 'letter', 'half letter', 'half legal', 'other print']],
+     ['Web',
+       ['full banner', 'half banner', 'vertical banner', 'button']]
+    ]
+  end
+
 end

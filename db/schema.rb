@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405113228) do
+ActiveRecord::Schema.define(:version => 20120903031642) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20120405113228) do
     t.string   "color_space"
     t.integer  "bleed"
     t.integer  "estimate_id"
+    t.string   "ad_dimensions"
   end
 
   create_table "designers", :force => true do |t|

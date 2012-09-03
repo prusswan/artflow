@@ -14,7 +14,10 @@ class Creation < ActiveRecord::Base
 
   before_validation :copy_client_id, on: :create
 
-  attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer, :status
+  before_save :set_defaults
+
+  attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer, :status,
+                  :color_space, :bleed, :ad_dimensions
 
   def title
     name
@@ -44,5 +47,9 @@ class Creation < ActiveRecord::Base
   private
     def copy_client_id
       write_attribute(:client_id, project.client_id)
+    end
+
+    def set_defaults
+      self.revision = 1 unless self.revision
     end
 end
