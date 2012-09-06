@@ -3,7 +3,7 @@ Artflow::Application.routes.draw do
   devise_for :designers
   devise_for :users
 
-  resources :creations, only: [:index, :show, :new, :create, :edit] do
+  resources :creations do
     resources :comments, only: [:index, :create]
     member do
       get 'permissions'

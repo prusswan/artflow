@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  belongs_to :client, class_name: 'User'
+  belongs_to :client
   has_many :projects, dependent: :destroy
   validates :name, presence: true
 

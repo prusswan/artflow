@@ -10,8 +10,10 @@ describe CampaignsController do
   end
 
   describe "GET 'show'" do
+    let(:campaign) { FactoryGirl.create(:campaign) }
+
     it "returns http success" do
-      get 'show'
+      get 'show', id: campaign
       response.should be_success
     end
   end

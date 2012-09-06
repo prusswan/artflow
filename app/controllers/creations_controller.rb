@@ -1,5 +1,6 @@
 class CreationsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_creation, :only => [:show, :edit, :update, :destroy, :permissions]
 
   def index
     @creations = Creation.all
@@ -18,6 +19,7 @@ class CreationsController < ApplicationController
     # project, ar a form that supported adding the creation from the
     # specific project context.
     @creation.project = Project.first
+    @creation.designer = current_user
 
     if @creation.save
       flash[:notice] = "Creation added!"
@@ -29,10 +31,44 @@ class CreationsController < ApplicationController
   end
 
   def show
-    @creation = Creation.find(params[:id])
+    @client = @creation.project.client
+    respond_to do |format|
+      format.json do
+        render :json => CreationSummary.new(@creation, current_user).to_json
+      end
+      format.html
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @creation.update_attributes(params[:creation])
+      flash[:notice] = "Creation has been updated."
+      redirect_to @creation
+    else
+      flash[:alert] = "Creation has not been updated."
+      render :action => "edit"
+    end
+  end
+
+  def destroy
+    @creation.destroy
+    flash[:notice] = "Creation has been deleted."
+    redirect_to creations_path
   end
 
   def permissions
-    @creation = Creation.find(params[:id])
+
   end
+
+  private
+    def find_creation
+      @creation = Creation.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The creation you were looking for could not be found."
+      redirect_to creations_path
+    end
 end

@@ -1,6 +1,6 @@
 - content_for :functional_nav do
   %li
-    = link_to 'Edit this creation', @creation
+    = link_to 'Edit this creation', edit_creation_path(@creation)
 
 = render partial: 'preview', locals: {creation: @creation}
 

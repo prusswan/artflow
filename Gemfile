@@ -32,11 +32,13 @@ group :test do
   gem 'database_cleaner'
   gem 'headless'
   gem 'launchy'
+  gem 'factory_girl'
 end
 
 group :development do
   gem 'guard'
   gem 'guard-cucumber'
+  gem 'guard-rspec'
 end
 
 gem 'jquery-rails'

@@ -2,4 +2,7 @@
 
 - currently_at 'Designers'
 
--# STUB: This view is not covered in the chapter
+%ul
+  - @designers.each do |designer|
+    %li
+      = link_to designer.name, designer

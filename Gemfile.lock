@@ -70,6 +70,8 @@ GEM
     eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.0.0)
+      activesupport (>= 3.0.0)
     ffi (1.1.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
@@ -81,6 +83,8 @@ GEM
     guard-cucumber (1.2.0)
       cucumber (>= 1.2.0)
       guard (>= 1.1.0)
+    guard-rspec (1.2.1)
+      guard (>= 1.1)
     haml (3.1.7)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -207,9 +211,11 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  factory_girl
   formtastic
   guard
   guard-cucumber
+  guard-rspec
   haml-rails
   headless
   jquery-rails

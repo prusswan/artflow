@@ -1,5 +1,5 @@
 Then /^there should be (\d+) comments?$/ do |number|
-  all(:css, '#comments li').size.should eql(number)
+  wait_until { page.all(:css, '#comments li').count eql(number) }
 end
 
 Then /^the comment form should be visible$/ do

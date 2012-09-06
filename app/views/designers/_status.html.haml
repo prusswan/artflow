@@ -1,0 +1,22 @@
+%section.designer-status
+  %title Status
+  %dl
+    %dt Active Projects
+    %dd.active-projects= status.active_projects_count
+    %dt Pending Approval
+    %dd.pending-creations= status.pending_approvals_count
+    %dt Approved
+    %dd.approved-creations= status.approved_count
+    - if status.expanded?
+      %h3 Active Project Hours
+      %table
+        %tr
+          %th Project
+          %th Hours
+        - status.hours_per_project.each do |project, hours|
+          %tr
+            %td= link_to project.name, project
+            %td= hours
+        %tr
+          %th Total
+          %td= status.active_hours

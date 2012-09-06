@@ -3,7 +3,8 @@
     %header
       %h1 Assigned Designers
     %ul
-      = render @project.designers
+      - @project.designers.each do |designer|
+        %li= designer_status_for(designer)
 
 %article
   %header

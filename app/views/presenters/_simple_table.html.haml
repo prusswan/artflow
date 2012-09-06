@@ -1,0 +1,11 @@
+%table
+  %thead
+    %tr
+      - simple_table.columns.each_key do |title|
+        %th= title
+  %tbody
+    - simple_table.each do |record|
+      %tr
+        - simple_table.values(record).each do |title, value|
+          %td
+            = value

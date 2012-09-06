@@ -7,6 +7,7 @@
   = f.inputs do
     = f.input :name, input_html: {autofocus: true}
     = f.input :description, input_html: {cols: 80, rows: 4}
+    = f.input :status, collection: %w(awaiting_approval approved completed)
     = f.input :file
 
   = f.actions

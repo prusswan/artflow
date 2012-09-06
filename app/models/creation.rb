@@ -10,11 +10,17 @@ class Creation < ActiveRecord::Base
   belongs_to :designer
   has_many :comments
 
-  validates :name, :description, :project_id, presence: true
+  validates :name, :description, :revision, :file_content_type,
+            :project_id, :estimate_id, presence: true
+
+  delegate :campaign, to: :project
+
+  scope :active, conditions: 'status != "completed"'
+  scope :pending_approval, conditions: {status: 'awaiting_approval'}
+  scope :approved, conditions: {status: 'approved'}
 
   before_validation :copy_client_id, on: :create
-
-  before_save :set_defaults
+  before_validation :set_defaults
 
   attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer, :status,
                   :color_space, :bleed, :ad_dimensions
@@ -50,6 +56,8 @@ class Creation < ActiveRecord::Base
     end
 
     def set_defaults
-      self.revision = 1 unless self.revision
+      self.revision = 1 unless revision
+      self.file_content_type = 'placeholder' unless file_content_type
+      self.estimate = Estimate.create unless estimate
     end
 end
