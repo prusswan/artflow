@@ -13,4 +13,4 @@
 //= require modernizr-2.6.1.custom
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require comments

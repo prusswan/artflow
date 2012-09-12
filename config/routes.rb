@@ -4,6 +4,7 @@ Artflow::Application.routes.draw do
   devise_for :users
 
   resources :creations, only: [:index, :show, :new, :create, :edit] do
+    resources :comments, only: [:index, :create]
     member do
       get 'permissions'
       get 'approve'
@@ -11,7 +12,7 @@ Artflow::Application.routes.draw do
   end
   resources :campaigns, only: [:index, :show]
   resources :projects, only: [:index, :show]
-  resources :designers, only: :index
+  resources :designers, only: [:index, :show]
 
   resources :project_assignments, only: :index
   resources :clients, only: [:index, :show]

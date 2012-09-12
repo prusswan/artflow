@@ -1,0 +1,4 @@
+%li
+  = raw textilize(comment.body)
+  %p.meta
+    #{link_to comment.user.name, comment.user}, #{l comment.created_at}

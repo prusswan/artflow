@@ -17,6 +17,7 @@
  *= require blueprint/typography
  *= require interested
  *= require text
+ *= require formtastic
  *= require buttons
  *= require icons
  *= require fonts
