@@ -8,12 +8,12 @@ Artflow::Application.routes.draw do
       get 'permissions'
     end
   end
-  resources :campaigns, only: :index
+  resources :campaigns, only: [:index, :show]
   resources :projects, only: [:index, :show]
   resources :designers, only: :index
 
   resources :project_assignments, only: :index
-  resources :clients, only: :index
+  resources :clients, only: [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

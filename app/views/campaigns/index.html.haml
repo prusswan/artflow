@@ -1,2 +1,7 @@
 %h1 Campaigns
 - currently_at 'Campaigns'
+
+%ul
+  - @campaigns.each do |campaign|
+    %li
+      = link_to campaign.name, campaign

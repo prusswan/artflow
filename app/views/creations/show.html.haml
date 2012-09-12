@@ -1,3 +1,9 @@
 - content_for :functional_nav do
   %li
     = link_to 'Edit this creation', @creation
+
+= render partial: 'preview', locals: {creation: @creation}
+
+%dl
+  %dt Client
+  %dd= creation_client_name

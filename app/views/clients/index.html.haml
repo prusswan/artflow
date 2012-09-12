@@ -1,2 +1,6 @@
-%h1 Clients#index
-%p Find me in app/views/clients/index.html.haml
+- currently_at 'Clients'
+
+%ul
+  - @clients.each do |client|
+    %li
+      = link_to client.name, client
