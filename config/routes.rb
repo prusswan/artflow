@@ -1,4 +1,20 @@
 Artflow::Application.routes.draw do
+  devise_for :clients
+  devise_for :designers
+  devise_for :users
+
+  resources :creations, only: [:index, :show, :new, :create, :edit] do
+    member do
+      get 'permissions'
+    end
+  end
+  resources :campaigns, only: :index
+  resources :projects, only: [:index, :show]
+  resources :designers, only: :index
+
+  resources :project_assignments, only: :index
+  resources :clients, only: :index
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +64,7 @@ Artflow::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 
