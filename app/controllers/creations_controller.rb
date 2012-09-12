@@ -1,9 +1,16 @@
 class CreationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, unless: :is_mobile_device?
   before_filter :find_creation, :only => [:show, :edit, :update, :destroy, :permissions]
 
   def index
-    @creations = Creation.all
+    unless is_mobile_device?
+      @creations = Creation.all
+    else
+      # Note: for this example we will just grab the first project's
+      # creations
+      @project = Project.first
+      @creations = @project.creations
+    end
   end
 
   def new
@@ -67,6 +74,7 @@ class CreationsController < ApplicationController
   private
     def find_creation
       @creation = Creation.find(params[:id])
+      @project = @creation.project if is_mobile_device?
       rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The creation you were looking for could not be found."
       redirect_to creations_path

@@ -10,6 +10,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'formtastic'
 gem 'textilize'
+gem 'mobile-fu'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,6 +43,7 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 gem 'haml-rails'
 
 # To use ActiveModel has_secure_password

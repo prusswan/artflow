@@ -80,4 +80,34 @@ module CreationsHelper
     ]
   end
 
+  def link_to_preview(active = false)
+    navbar_link_to('Preview', [@project, @creation], 'grid', active)
+  end
+
+  def link_to_comments(active = false)
+    navbar_link_to('Comments', [@project, @creation, :comments], 'info', active)
+  end
+
+  def link_to_modify(active = false)
+    navbar_link_to('Modify', [:edit, @project, @creation], 'gear', active)
+  end
+
+  def navbar_link_to(text, url, icon, active = false)
+    link_to text, url, 'class' => navbar_link_class(active),
+                       'data-icon' => icon,
+                       'data-transition' => 'slide'
+  end
+
+  def navbar_link_class(active = false)
+    active ? 'ui-btn-active' : nil
+  end
+
+  def link_to_home
+    link_to('Home', [@project, :creations],
+            'class' => 'ui-btn-right',
+            'data-icon' => 'home',
+            'data-iconpos' => 'notext',
+            'data-direction' => 'reverse')
+  end
+
 end

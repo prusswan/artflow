@@ -1,0 +1,17 @@
+- self.formats = [:mobile, :html]
+%article{"data-role" => "page", "data-theme" => "c"}
+  = render 'layouts/header'
+  %div{"data-role" => "content"}
+    - if @comments.any?
+      %ul
+        = render @comments
+    = form_for [@project, @creation, Comment.new], :html => {'data-transition' => 'pop'} do |f|
+      = f.label :body, 'Comment'
+      = f.text_area :body, :cols => nil
+      = f.submit 'Add'
+  %footer{"data-role" => "footer"}
+    %div{"data-role" => "navbar"}
+      %ul
+        %li= link_to_preview
+        %li= link_to_comments(true)
+        %li= link_to_modify

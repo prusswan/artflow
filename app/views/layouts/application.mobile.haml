@@ -1,0 +1,10 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title ArtFlow: Mobile Edition!
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+      = stylesheet_link_tag 'jquery.mobile'
+      = javascript_include_tag 'jquery', 'jquery-mobile-overrides', 'jquery.mobile'
+  %body
+    = yield
+    = render partial: 'layouts/footer'

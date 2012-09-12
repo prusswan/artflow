@@ -11,7 +11,12 @@ Artflow::Application.routes.draw do
     end
   end
   resources :campaigns, only: [:index, :show]
-  resources :projects, only: [:index, :show]
+  resources :projects, only: [:index, :show] do
+    # For mobile
+    resources :creations do
+      resources :comments, only: [:index, :create]
+    end
+  end
   resources :designers, only: [:index, :show]
 
   resources :project_assignments, only: :index

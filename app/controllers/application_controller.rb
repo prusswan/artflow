@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  has_mobile_fu
+
+  before_filter :set_request_format
   before_filter :set_expanded_view
 
   helper_method :current_user
@@ -23,5 +26,9 @@ class ApplicationController < ActionController::Base
   # are expanded
   def set_expanded_view
     session[:view] = 'expanded'
+  end
+
+  def set_request_format
+    request.format = :mobile if is_mobile_device? # && !request.xhr?
   end
 end

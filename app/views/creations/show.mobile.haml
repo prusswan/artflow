@@ -1,0 +1,10 @@
+%article{"data-role" => "page", "data-theme" => "c"}
+  = render 'layouts/header'
+  %div{"data-role" => "content"}
+    %p= image_tag @creation.file.url
+  %footer{"data-role" => "footer"}
+    %div{"data-role" => "navbar"}
+      %ul
+        %li= link_to_preview(true)
+        %li= link_to_comments
+        %li= link_to_modify

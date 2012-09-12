@@ -24,6 +24,11 @@
             = alert
 
         = yield
+
+      - if content_for?(:ipad_sidebar)
+        #ipad_sidebar
+          = yield :ipad_sidebar
+
       %section#sidebar
         %nav#functional_nav
           %ul
