@@ -1,0 +1,13 @@
+%header#page_header{role: 'banner'}
+  %nav#utility
+    %p
+      - if designer_signed_in?
+        You are logged in as
+        %strong #{current_user.name}
+        = link_to '[Your Account]', '#'
+        |
+        = link_to '[Logout]', destroy_designer_session_path, method: :delete
+      - else
+        = link_to '[Login]', new_designer_session_path
+  = link_to image_tag('logo.png', alt: 'Artflow', id: 'logo'), root_url, title: 'Dashboard'
+  = yield :main_navigation

@@ -1,0 +1,8 @@
+- content_for :main_navigation do
+  %nav#main_nav{role: 'navigation'}
+    %ul
+      = nav_tab 'Home',      root_path,      current: current_tab
+      = nav_tab 'Creations', creations_path, current: current_tab
+      = nav_tab 'Campaigns', campaigns_path, current: current_tab
+      = nav_tab 'Projects',  projects_path,  current: current_tab
+      = nav_tab 'Designers', designers_path, current: current_tab

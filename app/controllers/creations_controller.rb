@@ -1,4 +1,6 @@
 class CreationsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @creations = Creation.all
   end

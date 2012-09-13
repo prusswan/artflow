@@ -1,0 +1,7 @@
+%h1 Projects
+- currently_at 'Projects'
+
+%ul
+  - @projects.each do |project|
+    %li
+      = link_to project.name, project
