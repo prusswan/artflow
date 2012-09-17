@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    authenticate_designer!
+    #authenticate_designer!
   end
 
   # NOTE: We stub out this personal preference so creation thumbnails
