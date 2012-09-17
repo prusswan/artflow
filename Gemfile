@@ -40,6 +40,8 @@ group :development do
   gem 'guard'
   gem 'guard-cucumber'
   gem 'guard-rspec'
+
+  gem 'letter_opener'
 end
 
 gem 'jquery-rails'

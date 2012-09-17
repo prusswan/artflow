@@ -1,0 +1,70 @@
+!!!
+%html
+  %head
+    :css
+      #page {
+        min-width: 600px;
+      }
+      #header {
+        background-color: #bc471d;
+        height: 94px;
+        overflow: hidden;
+        padding: 0 10px;
+      }
+      img#logo {float: left;}
+      img#cloud {float: right;}
+      img#subhead {margin-top:7px;}
+      img#creatives {float: right;}
+      p {
+        color: #666666;
+        font-family: verdana, arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 12px;
+        margin-top:15px;
+        width: 315px;
+      }
+      #footer p {
+        color: #999999;
+        font-size: 10px;
+        margin-bottom: 12px;
+      }
+    %meta{:content => "text/html; charset=ISO-8859-1", "http-equiv" => "content-type"}
+    %title 25% off ArtFlow for a limited time
+  %body
+    %p{:style => "font-family: verdana, arial, sans-serif;\n              font-size: 9px;"}
+      Can't view this email?
+      = succeed "." do
+        %a{:href => ""} View it on the Web
+    #header
+      %img#logo{:alt => "ArtFlow", :src => "http://artflowme.com/images/email/logo.gif"}
+      %img#cloud{:alt => "cloud icon", :src => "http://artflowme.com/images/email/cloud.gif"}
+    #page
+      %img#creatives{:alt => "image of creative elements", :src => "http://artflowme.com/images/email/creatives.jpg"}
+      %img#subhead{:alt => "Creative File Management Made Easy", :src => "http://artflowme.com/images/email/subhead.gif"}
+      %p
+        We here at AwesomeCo know how the end of the year can just be too much
+        for keeping your files in order. Lots of &quot;get it out the door
+        before the holiday&quot; projects end up in file server soup when you
+        get back after New Year's.
+      %p
+        That's why, for a limited time only, we're offering all new customers:
+      %a{:href => "http://www.artflowme.com/holiday/"}
+        %img{:alt => "Sign up today and get 25% off artflow", :src => "http://artflowme.com/images/email/pitch.gif"}
+      %p
+        Make your New Year's resolution to not have any more &quot;to
+        sort&quot; folders. Get your team and your clients communicating
+        better with our industry-changing software.
+      %p
+        Because no designs should be alone this holiday season.
+      %a{:href => "http://www.artflowme.com/holiday/"}
+        %img{:alt => "Sign up today and get 25% off artflow", :border => "0", :src => "http://artflowme.com/images/email/button1.gif"}
+      %br
+      %br
+    #footer
+      %img{:alt => "&copy;2011 John Athayde, Bruce Williams. All Rights Reserved, All Wrongs Reversed.", :src => "http://artflowme.com/images/email/footer.gif"}
+      %p
+        We hate spam too, so if you received this in error, or simply no
+        longer wish to receive our marketing emails,
+        %a{:href => "http://www.artflowme.com/marketing/unsub"} simply click here
+        to unsubscribe.

@@ -22,6 +22,8 @@ class Creation < ActiveRecord::Base
   before_validation :copy_client_id, on: :create
   before_validation :set_defaults
 
+  after_create :notify_created
+
   attr_accessible :name, :file, :stage, :revision, :hours, :description, :designer, :status,
                   :color_space, :bleed, :ad_dimensions
 
@@ -59,5 +61,9 @@ class Creation < ActiveRecord::Base
       self.revision = 1 unless revision
       self.file_content_type = 'placeholder' unless file_content_type
       self.estimate = Estimate.create unless estimate
+    end
+
+    def notify_created
+      Notifier.creation_added(self).deliver
     end
 end

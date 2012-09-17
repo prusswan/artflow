@@ -34,4 +34,13 @@ Artflow::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Prevent automated tasks from using letter opener
+  # NOTE: Comment out the conditional to see a lot of
+  # emails when you `rake db:reset` and the seeds are loaded
+  unless File.basename($0) == 'rake'
+    config.action_mailer.delivery_method = :letter_opener
+  end
+
+  config.action_mailer.default_url_options = {host: 'localhost:3000'}
 end

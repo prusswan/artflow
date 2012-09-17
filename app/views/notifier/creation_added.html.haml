@@ -1,0 +1,25 @@
+%h2 ArtFlow Notification
+
+%p
+  Hi there, #{@creation.client.name}!
+%p
+  = @creation.designer.name
+  has posted a new creation at
+  = l @creation.created_at
+  in your campaign,
+  %i= @campaign.name
+
+%h3 Here's more information about it
+%dl
+  %dt Name
+  %dd= @creation.name
+  %dt Project
+  %dd= @creation.project.name
+
+- if @creation.approvable?
+  %p
+    This creation is
+    #{link_to "awaiting approval", edit_creation_url(@creation)}.
+
+%p.footnote
+  Thank you for using #{link_to 'ArtFlow', root_url}.
