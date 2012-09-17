@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   has_mobile_fu
 
+  use_vanity :current_user
+
   before_filter :set_request_format
   before_filter :set_expanded_view
 
