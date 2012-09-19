@@ -2,6 +2,8 @@ class CreationsController < ApplicationController
   before_filter :authenticate_user!, unless: :is_mobile_device?
   before_filter :find_creation, :only => [:show, :edit, :update, :destroy, :permissions]
 
+  caches_action :index
+
   def index
     unless is_mobile_device?
       @creations = Creation.all
@@ -18,17 +20,17 @@ class CreationsController < ApplicationController
   end
 
   def create
-    @creation = Creation.new(params[:creation])
+    @creation = current_project.creations.new(params[:creation])
     # STUB: Since we're just illustrating how to build the form, we're
     # just assigning the first project here. In a fully fledged app,
     # this information would either comefrom a
     # mare camplex form that supports selecting the client and
     # project, ar a form that supported adding the creation from the
     # specific project context.
-    @creation.project = Project.first
     @creation.designer = current_user
 
     if @creation.save
+      expire_action action: :index
       flash[:notice] = "Creation added!"
       redirect_to @creation
     else
@@ -78,5 +80,9 @@ class CreationsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The creation you were looking for could not be found."
       redirect_to creations_path
+    end
+
+    def current_project
+      Project.first
     end
 end

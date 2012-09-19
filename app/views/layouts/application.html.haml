@@ -37,10 +37,6 @@
                 = link_to 'Add Creation', new_creation_path
             = yield :functional_nav
         = yield :sidebar
-        %section#recent_activity
-          %header
-            %h1.ir#recent Recent Activity
-          = render 'activity_items/recent'
         %section
           %header
             = link_to 'Clients', clients_path

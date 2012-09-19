@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   has_mobile_fu
 
+  # hack to trigger conversions more easily for development:
+  # the idea is to generate a unique identifier using current_time that
+  # *sometimes* repeat across requests, thus allowing the conversion to be tracked
+  use_vanity { |c| Time.now.to_i + rand(0..4) }
+
   before_filter :set_request_format
   before_filter :set_expanded_view
 

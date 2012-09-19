@@ -1,0 +1,6 @@
+- content_for :sidebar do
+  - cache action: 'recent_app_activity' do
+    %section#recent_activity
+      %header
+        %h1#recent.ir Recent Activity
+      = render 'activity_items/recent'

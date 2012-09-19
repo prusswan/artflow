@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'formtastic'
 gem 'textilize'
 gem 'mobile-fu'
+gem 'vanity'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,6 +35,8 @@ group :test do
   gem 'headless'
   gem 'launchy'
   gem 'factory_girl'
+  gem 'deadweight', require: 'deadweight/hijack/rails'
+  gem 'mechanize'
 end
 
 group :development do

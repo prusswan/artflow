@@ -20,7 +20,11 @@ Artflow::Application.routes.draw do
   resources :designers, only: [:index, :show]
 
   resources :project_assignments, only: :index
-  resources :clients, only: [:index, :show]
+  resources :clients, only: [:index, :show] do
+    resources :subscriptions, only: :create
+  end
+
+  match '/vanity(/:action/:id)', :controller => :vanity, :as => :vanity
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

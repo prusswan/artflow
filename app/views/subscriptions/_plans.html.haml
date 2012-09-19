@@ -1,0 +1,3 @@
+- plan = ab_test('3_vs_5_plans')
+
+= link_to "Subscribe to Plan ##{plan}", client_subscriptions_path(@client, subscription: {plan_id: plan}), data: {method: :post}
